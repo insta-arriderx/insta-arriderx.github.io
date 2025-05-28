@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>arriderx - Start</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(0, 255, 255, 0.15);
+            border-bottom: 2px solid #00ffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,255,255,0.2);
+            backdrop-filter: blur(10px);
+        }
+
+            header .welcome {
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: #00ffff;
+                letter-spacing: 0.1em;
+                text-shadow: 0 0 6px #00ffff;
+            }
+
+            header .center a {
+                color: #00ffff;
+                text-decoration: none;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                font-size: 1.3rem;
+                transition: color 0.3s ease;
+            }
+
+                header .center a:hover {
+                    color: #00fff0;
+                    text-shadow: 0 0 8px #00fff0;
+                }
+
+            header .center img {
+                width: 28px;
+                height: 28px;
+                filter: drop-shadow(0 0 2px #00ffff);
+                transform-origin: center;
+                animation: insta-pulse 2.5s infinite ease-in-out;
+            }
+
+        @keyframes insta-pulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 2px #00ffff);
+            }
+
+            50% {
+                transform: scale(1.15);
+                filter: drop-shadow(0 0 6px #00ffff);
+            }
+        }
+
+        header .datetime {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #a0f0f0;
+            user-select: none;
+            letter-spacing: 0.05em;
+            text-shadow: 0 0 4px #00ffffaa;
+            min-width: 210px;
+            text-align: right;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 40px 60px;
+            display: flex;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        aside.sidebar {
+            width: 30%;
+            background: rgba(0,255,255,0.05);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 0 25px #00ffff44 inset;
+            backdrop-filter: blur(12px);
+        }
+
+            aside.sidebar h2 {
+                font-size: 2.2rem;
+                color: #00ffff;
+                margin-bottom: 25px;
+                text-align: center;
+                text-shadow: 0 0 8px #00ffffcc;
+            }
+
+        .dropdown {
+            background: #012b34dd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px #00ffff55;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+            .dropdown:hover {
+                background: #005f73cc;
+            }
+
+            .dropdown button {
+                width: 100%;
+                background: none;
+                border: none;
+                padding: 18px 20px;
+                font-size: 1.2rem;
+                color: #00ffff;
+                font-weight: 600;
+                cursor: pointer;
+                text-align: left;
+                letter-spacing: 0.05em;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                user-select: none;
+                position: relative;
+            }
+
+                .dropdown button::after {
+                    content: "▼";
+                    font-size: 0.7rem;
+                    color: #00ffffaa;
+                    margin-left: auto;
+                    transition: transform 0.3s ease;
+                }
+
+            .dropdown.active button::after {
+                transform: rotate(-180deg);
+            }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            color: #a0f0f0;
+            font-size: 1rem;
+            line-height: 1.5;
+            transition: max-height 0.5s ease, padding 0.4s ease;
+            letter-spacing: 0.02em;
+            user-select: text;
+        }
+
+        .dropdown.active .dropdown-content {
+            max-height: 300px;
+            padding: 15px 20px 25px 20px;
+        }
+
+        section.services {
+            flex-grow: 1;
+            background: rgba(0,255,255,0.07);
+            border-radius: 20px;
+            padding: 30px 40px;
+            box-shadow: 0 0 40px #00ffff33 inset;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+
+            section.services h2 {
+                font-size: 2.6rem;
+                margin-bottom: 30px;
+                color: #00ffff;
+                text-shadow: 0 0 10px #00ffffcc;
+                text-align: center;
+                letter-spacing: 0.1em;
+            }
+
+        .service-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .service-link {
+            background: #012b34cc;
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            width: 140px;
+            padding: 20px 15px;
+            text-align: center;
+            color: #00ffff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 0 15px #00ffff88;
+            transition: background 0.3s ease, transform 0.3s ease;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+            .service-link:hover {
+                background: #00ffff;
+                color: #002b34;
+                transform: scale(1.05);
+                box-shadow: 0 0 25px #00ffffdd;
+            }
+
+            .service-link img {
+                width: 55px;
+                height: 55px;
+                filter: drop-shadow(0 0 5px #00ffffbb);
+                transition: filter 0.3s ease;
+            }
+
+            .service-link:hover img {
+                filter: drop-shadow(0 0 10px #002b34);
+            }
+
+        footer {
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 0.9rem;
+            color: #00ffffaa;
+            text-shadow: 0 0 4px #00ffff55;
+            border-top: 1px solid #00ffff44;
+            user-select: none;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Responsive */
+
+        @media (max-width: 1024px) {
+            main {
+                padding: 30px 20px;
+                gap: 35px;
+                flex-direction: column;
+                max-width: 90vw;
+                margin: 40px auto;
+            }
+
+            aside.sidebar {
+                width: 100%;
+            }
+
+            section.services {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header .welcome {
+                font-size: 1.3rem;
+            }
+
+            header .center a {
+                font-size: 1.1rem;
+            }
+
+            header .datetime {
+                font-size: 0.85rem;
+                min-width: 150px;
+            }
+
+            .service-link {
+                width: 100%;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 15px;
+                font-size: 1rem;
+                padding: 12px 15px;
+            }
+
+                .service-link img {
+                    width: 38px;
+                    height: 38px;
+                }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="welcome">Witaj na mojej stronie!</div>
+        <div class="center">
+            <a href="https://www.instagram.com/arriderx/" target="_blank" rel="noopener noreferrer" aria-label="Instagram arriderx">
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
+                @arriderx
+            </a>
+        </div>
+        <div class="datetime" id="datetime">Loading...</div>
+    </header>
+
+    <main>
+        <aside class="sidebar">
+            <h2>O mnie</h2>
+
+            <div class="dropdown">
+                <button>🧑‍💼 Kim jestem?</button>
+                <div class="dropdown-content">
+                    <p>
+                        Mam na imię Daniel, a znajomi mówią na mnie Kosu.
+                        Jestem młody, otwarty i działam w wielu dziedzinach. Jeszcze nie rolnik, ale już blisko – szykuję się, by nim zostać..
+                    </p>
+                </div>
+            </div>
+
+           
+        <section class="services">
+            <h2>Moje sociale</h2>
+            <div class="service-grid">
+                <a href="https://mentoringbiznesowy.simdif.com" class="service-link" target="_blank" rel="noopener noreferrer">
+                    <img src="images/money-flow.png" alt="Mentoring" />
+                    Mentoring
+                </a>
+                <a href="https://t.me/arriderx" class="service-link" target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
+                    Telegram
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=100087878471197" class="service-link" target="_blank" rel="noopener noreferrer">
+                    <img src="images/facebook.png" alt="Facebook" />
+                    Facebook
+                </a>
+                <a href="https://instagram.com/arriderx" class="service-link" target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
+                    Instagram
+                </a>
+            </div>
+        </section>
+
+        <section class="services">
+            <h2>Potrzebuje...</h2>
+            <div class="service-grid">
+                <a href="cv.html" class="service-link" target="_blank" rel="noopener noreferrer">
+                    <img src="images/cv.png" alt="CV" width="64" height="64" />
+                    CV
+                </a>
+                <a href="grafika.html" class="service-link" target="_blank" rel="noopener noreferrer">
+                    <img src="images/layers.png" alt="layers" width="64" height="64" />
+                    Grafika
+                </a>
+                <a href="mentoring.html" class="service-link" target="_blank" rel="noopener noreferrer">
+                    <img src="images/money-flow.png" alt="Moneyflow" width="64" height="64" />
+                    Mentoring
+                </a>
+                <a href="pilne.html" class="service-link" target="_blank" rel="noopener noreferrer">
+                    <img src="images/siren.png" alt="Pilne" width="64" height="64" />
+                    Pilne
+                </a>
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        &copy; 2025 arriderx. Wszelkie prawa zastrzeżone.
+    </footer>
+
+    <script>
+        // Aktualna data i czas w nagłówku
+        function updateDateTime() {
+            const dt = new Date();
+            const options = {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            };
+            const dateStr = dt.toLocaleDateString('pl-PL', options);
+            document.getElementById('datetime').textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+        }
+
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+
+        // Dropdown toggle
+        const dropdowns = document.querySelectorAll('.dropdown button');
+        dropdowns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const parent = btn.parentElement;
+                parent.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

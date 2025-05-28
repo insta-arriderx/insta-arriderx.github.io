@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arriderx - CV</title>
+    <link rel="stylesheet" href="glowna.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: rgba(0, 255, 255, 0.15);
+            border-bottom: 2px solid #00ffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .welcome {
+            color: #00ffff;
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-shadow: 0 0 6px #00ffff;
+            margin: 20px;
+            padding: 20px 40px;
+            border: 4px solid;
+            border-radius: 50px;
+            text-align: left;
+            animation: borderColor 3s linear infinite;
+            box-shadow: 0 0 20px #0ff;
+        }
+
+        .center a {
+            color: #00ffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .datetime {
+            color: #a0f0f0;
+            font-weight: 600;
+            font-size: 1rem;
+            text-shadow: 0 0 4px #00ffffaa;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .left, .right {
+            width: 30%;
+            background: rgba(0,255,255,0.05);
+            border: 2px solid #00ffff;
+            border-radius: 30px;
+            padding: 25px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 25px #00ffff44 inset;
+        }
+
+            .left h2 {
+                color: #00ffff;
+                text-align: center;
+                text-shadow: 0 0 8px #00ffffcc;
+                margin-bottom: 20px;
+            }
+
+            .left p {
+                margin-bottom: 20px;
+                color: #a0f0f0;
+                line-height: 1.6;
+            }
+
+        .button {
+            background: #012b34;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            transition: 0.3s ease;
+            text-shadow: 0 0 5px #00ffff;
+        }
+
+            .button:hover {
+                background: #00ffff;
+                color: #002b34;
+                text-shadow: 0 0 8px #002b34;
+            }
+
+                .button:hover::after {
+                    content: "⭐Dzięki za wybranie mnie";
+                    margin-left: 10px;
+                }
+
+        .right .button {
+            display: block;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #012b34;
+            border: 2px solid #00ffff;
+            padding: 30px;
+            border-radius: 30px;
+            color: #00ffff;
+            box-shadow: 0 0 20px #00ffffaa;
+            z-index: 2000;
+        }
+
+            .modal.active {
+                display: block;
+            }
+
+            .modal button {
+                margin-top: 20px;
+            }
+        @keyframes borderColor {
+            0% {
+                border-color: #ff0000;
+                box-shadow: 0 0 10px #ff0000;
+            }
+
+            25% {
+                border-color: #00ff00;
+                box-shadow: 0 0 10px #00ff00;
+            }
+
+            50% {
+                border-color: #0000ff;
+                box-shadow: 0 0 10px #0000ff;
+            }
+
+            75% {
+                border-color: #ff00ff;
+                box-shadow: 0 0 10px #ff00ff;
+            }
+
+            100% {
+                border-color: #ff0000;
+                box-shadow: 0 0 10px #ff0000;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="welcome">Miłego dnia!</div>
+        <div class="center">
+            <a href="https://www.instagram.com/arriderx" target="_blank">
+                <img src="images/instagram.png" alt="Instagram" style="width: 28px; height: 28px;">
+                Mój Instagram
+            </a>
+        </div>
+        <div class="datetime" id="datetime"></div>
+    </header>
+
+    <main>
+        <div class="left">
+            <h2>Potrzebuję pomocy z... CV</h2>
+            <p>
+                Wypełnij formularz zgodnie z prawdą — to ważne, by wszystko było zgodne z prawem i byśmy mogli sprawnie się skontaktować. Po jego wysłaniu, zadzwonię do Ciebie albo wyślę SMS-a na podany numer.
+
+                Wysyłając formularz, zgadzasz się na przetwarzanie Twoich danych osobowych wyłącznie w celu pomocy przy tworzeniu CV i kontaktu z Tobą. Spokojnie — Twoje dane są bezpieczne i używane tylko w tym celu.
+
+                Klauzula zgody:
+                Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w formularzu kontaktowym, zgodnie z obowiązującymi przepisami, w celu pomocy w przygotowaniu CV. Oświadczam, że wszystkie podane dane są prawdziwe. Dbamy o Twoją prywatność i jesteśmy tu, by ułatwić Ci pierwszy krok do nowej pracy!
+            </p>
+            <a class="button" href="formularz.html">Przejdź do formularza</a>
+        </div>
+
+        <div class="right">
+            <a class="button" href="glowna.html">Powrót</a>
+            <a class="button" href="https://www.facebook.com/profile.php?id=100087878471197" target="_blank">Facebook</a>
+            <button class="button" onclick="alert('Mówiłem, żebyś nie klikał 😄')">Nie klikaj mnie</button>
+            <button class="button" onclick="toggleModal()">Kontakt na email</button>
+        </div>
+    </main>
+
+    <div class="modal" id="emailModal">
+        <p>Email kontaktowy: <strong>nikugamespl@gmail.com</strong></p>
+        <button class="button" onclick="toggleModal()">OK</button>
+    </div>
+
+    <footer>
+        &copy; 2025 arriderx. Wszystkie prawa zastrzeżone.
+    </footer>
+
+    <script>
+        function toggleModal() {
+            document.getElementById("emailModal").classList.toggle("active");
+        }
+
+        function updateDateTime() {
+            const now = new Date();
+            const date = now.toLocaleDateString('pl-PL');
+            const time = now.toLocaleTimeString('pl-PL');
+            document.getElementById('datetime').textContent = `${date} ${time}`;
+        }
+
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+    </script>
+</body>
+</html>
