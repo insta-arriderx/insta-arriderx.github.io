@@ -1,0 +1,473 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>arriderx - Grafiki</title>
+    <link rel="stylesheet" href="glowna.css" />
+    <style>
+        /* Import fontu Poppins z Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        /* Reset marginesów i paddingów oraz podstawowy font */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background: rgba(0, 255, 255, 0.15);
+            border-bottom: 2px solid #00ffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .welcome {
+            color: #00ffff;
+            font-weight: 700;
+            font-size: 1.4rem;
+            text-shadow: 0 0 6px #00ffff;
+            border: 4px solid;
+            border-radius: 50px;
+            padding: 20px 40px;
+            animation: borderColor 3s linear infinite;
+            box-shadow: 0 0 20px #0ff;
+        }
+
+        header .center a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
+        }
+
+            header .center a:hover {
+                color: #00fff0;
+                text-shadow: 0 0 8px #00fff0;
+            }
+
+        header .center img {
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(0 0 2px #00ffff);
+            animation: insta-pulse 2.5s infinite ease-in-out;
+        }
+
+        @keyframes insta-pulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 2px #00ffff);
+            }
+
+            50% {
+                transform: scale(1.15);
+                filter: drop-shadow(0 0 6px #00ffff);
+            }
+        }
+
+        .datetime {
+            color: #a0f0f0;
+            font-weight: 600;
+            font-size: 1rem;
+            text-shadow: 0 0 4px #00ffffaa;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 40px;
+            flex-grow: 1;
+        }
+
+        /* Kolumny */
+        .left, .right {
+            width: 30%;
+            background: rgba(0,255,255,0.05);
+            border: 2px solid #00ffff;
+            border-radius: 30px;
+            padding: 25px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 25px #00ffff44 inset;
+        }
+
+            .left h2 {
+                color: #00ffff;
+                text-align: center;
+                text-shadow: 0 0 8px #00ffffcc;
+                margin-bottom: 20px;
+            }
+
+            .left p {
+                margin-bottom: 20px;
+                color: #a0f0f0;
+                line-height: 1.6;
+            }
+
+        /* Przycisk */
+        .button {
+            background: #012b34;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            transition: 0.3s ease;
+            text-shadow: 0 0 5px #00ffff;
+        }
+
+            .button:hover {
+                background: #00ffff;
+                color: #002b34;
+                text-shadow: 0 0 8px #002b34;
+            }
+
+        .right .button {
+            display: block;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+            .modal.show {
+                display: flex;
+            }
+
+        .modal-content {
+            background: #012b34;
+            border: 2px solid #00ffff;
+            border-radius: 30px;
+            padding: 30px;
+            color: #00ffff;
+            max-width: 320px;
+            text-align: center;
+            box-shadow: 0 0 20px #00ffffaa;
+        }
+
+            .modal-content p {
+                margin: 1rem 0;
+                font-size: 1.1rem;
+            }
+
+            .modal-content a {
+                color: #00ffff;
+                font-weight: bold;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+                .modal-content a:hover {
+                    text-decoration: underline;
+                }
+
+            .modal-content img.icon-instagram {
+                width: 22px;
+                height: 22px;
+            }
+
+            .modal-content button {
+                margin-top: 20px;
+                padding: 10px 25px;
+                background-color: #00ffff;
+                border: none;
+                color: #002b34;
+                font-weight: bold;
+                border-radius: 10px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+            }
+
+                .modal-content button:hover {
+                    background-color: #00b2b2;
+                }
+
+        /* Animacja borderColor dla powitania */
+        @keyframes borderColor {
+            0% {
+                border-color: #ff0000;
+                box-shadow: 0 0 10px #ff0000;
+            }
+
+            25% {
+                border-color: #00ff00;
+                box-shadow: 0 0 10px #00ff00;
+            }
+
+            50% {
+                border-color: #0000ff;
+                box-shadow: 0 0 10px #0000ff;
+            }
+
+            75% {
+                border-color: #ff00ff;
+                box-shadow: 0 0 10px #ff00ff;
+            }
+
+            100% {
+                border-color: #ff0000;
+                box-shadow: 0 0 10px #ff0000;
+            }
+        }
+        /* Sekcja usług graficznych */
+        .graphic-services {
+            background: rgba(0, 255, 255, 0.05);
+            border: 2px solid #00ffff;
+            border-radius: 30px;
+            padding: 25px 30px;
+            max-width: 600px;
+            box-shadow: 0 0 25px #00ffff44 inset;
+            backdrop-filter: blur(10px);
+            color: #e0ffff;
+        }
+
+            .graphic-services h2 {
+                text-align: center;
+                font-size: 2rem;
+                color: #00ffff;
+                text-shadow: 0 0 8px #00ffffcc;
+                margin-bottom: 25px;
+            }
+
+        .graphics-box h3 {
+            color: #00ffff;
+            margin-top: 20px;
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+            text-shadow: 0 0 6px #00ffff88;
+            border-bottom: 1px dashed #00ffff88;
+            padding-bottom: 4px;
+        }
+
+        .graphics-box ul {
+            list-style-type: "✦ ";
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+            .graphics-box ul li {
+                margin-bottom: 6px;
+                font-size: 0.95rem;
+                color: #c0fafa;
+                transition: transform 0.2s ease;
+            }
+
+                .graphics-box ul li:hover {
+                    transform: translateX(5px);
+                    color: #ffffff;
+                }
+
+        .graphic-services p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #a0fafa;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Powitanie -->
+        <div class="welcome">Miłego dnia!</div>
+
+        <!-- Link do Instagrama z ikoną -->
+        <div class="center">
+            <a href="https://www.instagram.com/arriderx" target="_blank" rel="noopener noreferrer">
+                <img src="images/instagram.png" alt="Instagram" />
+                Mój Instagram
+            </a>
+        </div>
+
+        <!-- Miejsce na aktualną datę i godzinę -->
+        <div class="datetime" id="datetime"></div>
+    </header>
+
+    <main>
+        <!-- Lewa kolumna z opisem i przyciskami -->
+        <section class="graphic-services">
+            <h2>Usługi graficzne</h2>
+            <p>Oferuję różne projekty graficzne dopasowane do Twoich potrzeb. Cennik znajdziesz na stronie głównej. Powodzenia z wyborem! 😎</p>
+
+            <div class="graphics-box">
+                <h3>Logo</h3>
+                <ul>
+                    <li>Proste logo typograficzne</li>
+                    <li>Logo z ikoną / grafiką</li>
+                    <li>Logo do social mediów (np. YouTube, Instagram)</li>
+                </ul>
+
+                <h3>Wizytówki</h3>
+                <ul>
+                    <li>Klasyczne wizytówki firmowe</li>
+                    <li>Nowoczesne wizytówki z kodem QR</li>
+                    <li>Projekt do druku i cyfrowy</li>
+                </ul>
+
+                <h3>Ulotki i plakaty</h3>
+                <ul>
+                    <li>Ulotki A5 / A6 reklamowe</li>
+                    <li>Plakaty promocyjne (eventy, produkty)</li>
+                    <li>Materiały do druku i online</li>
+                </ul>
+
+                <h3>Banery i grafiki na social media</h3>
+                <ul>
+                    <li>Banery na Facebooka / YouTube</li>
+                    <li>Posty i relacje na Instagram</li>
+                    <li>Szablony postów do edycji</li>
+                </ul>
+
+                <h3>Inne grafiki</h3>
+                <ul>
+                    <li>Miniaturki YouTube</li>
+                    <li>Infografiki</li>
+                    <li>Projekty do ogłoszeń OLX / Vinted</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Prawa kolumna z przyciskami i modalem kontaktowym -->
+        <div class="right">
+            <a class="button" id="instagramBtn" href="#">Instagram</a>
+            <a class="button" href="glowna.html">Powrót</a>
+            <a class="button" href="https://www.facebook.com/profile.php?id=100087878471197" target="_blank">Facebook</a>
+            <!-- Przycisk z alertem -->
+            <button class="button" onclick="alert('Mówiłem, żebyś nie klikał 😄')">Nie klikaj mnie</button>
+            <!-- Przycisk otwierający modal z emailem -->
+            <button class="button" onclick="toggleModal()">Kontakt na email</button>
+        </div>
+    </main>
+
+    <!-- Modal Instagram -->
+    <div id="instagramModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+        <div class="modal-content">
+            <p>Zapraszam do mojego Instagrama</p>
+            <a href="https://www.instagram.com/arriderx" target="_blank" rel="noopener noreferrer">
+                Instagram
+                <img class="icon-instagram" src="images/instagram.png" alt="Instagram icon" />
+            </a>
+            <button id="closeModalBtn" aria-label="Zamknij modal">OK</button>
+        </div>
+    </div>
+    <!-- Modal Maila -->
+    <div id="MailModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-modal="true">
+        <div class="modal-content">
+            <p>Napisz maila !</p>
+            <a href="mailto:nikugamespl@gmail.com" target="_blank" rel="noopener noreferrer">
+                Instagram
+                <img class="icon-mail" src="images/mail.png" alt="Mail icon" />
+            </a>
+            <button id="closeModalBtn" aria-label="Zamknij modal">OK</button>
+        </div>
+    </div>
+    <script>
+        // Aktualizacja daty i godziny w nagłówku co sekundę
+        const datetimeEl = document.getElementById('datetime');
+        function updateDateTime() {
+            const now = new Date();
+            const formatted = now.toLocaleString('pl-PL', {
+                year: 'numeric', month: 'long', day: 'numeric',
+                hour: '2-digit', minute: '2-digit', second: '2-digit'
+            });
+            datetimeEl.textContent = formatted;
+        }
+        setInterval(updateDateTime, 1000);
+        updateDateTime();
+
+        // Modal Instagram
+        const instagramBtn = document.getElementById('instagramBtn');
+        const MailModal = document.getElementById('MailModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        instagramBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            MailModal.classList.add('show');
+            MailModal.setAttribute('aria-hidden', 'false');
+            closeModalBtn.focus();
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            MailModal.classList.remove('show');
+            MailModal.setAttribute('aria-hidden', 'true');
+            instagramBtn.focus();
+        });
+
+        // Zamknięcie modalu klawiszem Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && MailModal.classList.contains('show')) {
+                MailModal.classList.remove('show');
+                MailModal.setAttribute('aria-hidden', 'true');
+                instagramBtn.focus();
+            }
+        });
+
+        // Modal Instagram
+        const MailBtn = document.getElementById('MailBtn');
+        const MailModal = document.getElementById('MailModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        instagramBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            MailModal.classList.add('show');
+            MailModal.setAttribute('aria-hidden', 'false');
+            closeModalBtn.focus();
+        });
+
+        closeModalBtn.addEventListener('click', () => {
+            MailModal.classList.remove('show');
+            MailModal.setAttribute('aria-hidden', 'true');
+            instagramBtn.focus();
+        });
+
+        // Zamknięcie modalu klawiszem Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && MailModal.classList.contains('show')) {
+                MailModal.classList.remove('show');
+                MailModal.setAttribute('aria-hidden', 'true');
+                instagramBtn.focus();
+            }
+        });
+    </script>
+
+</body>
+</html>

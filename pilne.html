@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilna pomoc – Skontaktuj się ze mną</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f3f3f3;
+        }
+
+        header {
+            background-color: #ff5252;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            padding: 2rem;
+        }
+
+        .contact-container {
+            background: white;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+            .contact-container h2 {
+                margin-top: 0;
+                color: #333;
+            }
+
+        .info-blocks {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-block {
+            flex: 1 1 45%;
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+            .info-block h3 {
+                margin-top: 0;
+                color: #ff5252;
+            }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            padding: 0.5rem;
+            margin-top: 0.3rem;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        button {
+            margin-top: 1.5rem;
+            padding: 0.7rem;
+            background-color: #ff5252;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+            button:hover {
+                background-color: #e84848;
+            }
+
+        .footer-links {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+            .footer-links a {
+                color: #ff5252;
+                margin: 0 10px;
+                text-decoration: none;
+                font-weight: bold;
+            }
+
+                .footer-links a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Masz problem? Napisz do mnie!</h1>
+    </header>
+
+    <main>
+        <div class="contact-container">
+            <h2>Potrzebujesz pilnej pomocy lub współpracy?</h2>
+
+            <div class="info-blocks">
+                <div class="info-block">
+                    <h3>🔧 Pomoc techniczna</h3>
+                    <p>Masz problem z komputerem, grafiką, stroną lub czymś innym? Napisz mi, a postaram się pomóc jak najszybciej!</p>
+                </div>
+                <div class="info-block">
+                    <h3>📦 Zamówienia i zapytania</h3>
+                    <p>Potrzebujesz indywidualnego projektu graficznego, logo lub wizytówki? Skontaktuj się ze mną przez formularz.</p>
+                </div>
+            </div>
+
+            <form action="mailto:nikugamespl@gmail.com" method="post" enctype="text/plain">
+                <label for="name">Imię i nazwisko</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Twój e-mail</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Wiadomość</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+
+                <button type="submit">Wyślij wiadomość</button>
+            </form>
+
+            <div class="footer-links">
+                <a href="mailto:nikugamespl@gmail.com">📧 E-mail</a>
+                <a href="https://www.instagram.com/nikugamespl" target="_blank">📸 Instagram</a>
+                <a href="glowna.html">⬅ Powrót do strony głównej</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

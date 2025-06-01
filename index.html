@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>arriderx</title>
+    <title>arriderx - Ładowanie</title>
+
     <style>
+        /* Styl ogólny dla całej strony (ciemne tło, centrum ekranu) */
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -17,6 +19,7 @@
             color: #0ff;
         }
 
+        /* Kontener na logo (znaki zapytania i piorun) */
         .logo-container {
             position: relative;
             width: 200px;
@@ -26,6 +29,7 @@
             align-items: center;
         }
 
+        /* Ogólne ustawienia stylu dla każdej części logo */
         .logo-part {
             position: absolute;
             font-size: 5rem;
@@ -33,7 +37,7 @@
             user-select: none;
         }
 
-            /* Piorun (środek) */
+            /* Środkowy znak pioruna ⚡ z animacją pulsowania */
             .logo-part.center {
                 left: 50%;
                 top: 50%;
@@ -42,7 +46,7 @@
                 color: #00ffff;
             }
 
-            /* Znak zapytania po lewej */
+            /* Lewy znak zapytania ❓ z animacją przesuwania i obrotu */
             .logo-part.left {
                 left: 15%;
                 top: 50%;
@@ -50,7 +54,7 @@
                 animation: slideRotateLeft 4s ease-in-out forwards;
             }
 
-            /* Znak zapytania po prawej */
+            /* Prawy znak zapytania ❓ z animacją przesuwania i obrotu */
             .logo-part.right {
                 right: 15%;
                 top: 50%;
@@ -58,7 +62,7 @@
                 animation: slideRotateRight 4s ease-in-out forwards;
             }
 
-        /* Animacja pulsowania pioruna */
+        /* Animacja pulsowania dla pioruna (środkowego elementu) */
         @keyframes pulseGlow {
             0%, 100% {
                 text-shadow: 0 0 10px #0ff, 0 0 30px #0ffcc;
@@ -73,7 +77,7 @@
             }
         }
 
-        /* Animacja przesuwania i obracania lewego znaku zapytania */
+        /* Animacja dla lewego znaku zapytania */
         @keyframes slideRotateLeft {
             0% {
                 transform: translateY(-50%) translateX(0) rotate(0deg);
@@ -91,7 +95,7 @@
             }
         }
 
-        /* Animacja przesuwania i obracania prawego znaku zapytania */
+        /* Animacja dla prawego znaku zapytania */
         @keyframes slideRotateRight {
             0% {
                 transform: translateY(-50%) translateX(0) rotate(0deg);
@@ -111,6 +115,7 @@
     </style>
 </head>
 <body>
+    <!-- Kontener z animowanym logo: ❓⚡❓ -->
     <div class="logo-container">
         <div class="logo-part left">❓</div>
         <div class="logo-part center">⚡</div>
@@ -118,9 +123,10 @@
     </div>
 
     <script>
+        // Przekierowanie na stronę główną po 4,5 sekundy (glowna.html)
         setTimeout(() => {
             window.location.href = "glowna.html";
-        }, 9000);
+        }, 4500);
     </script>
 </body>
 </html>

@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>arriderx - Mentoring</title>
     <style>
+        /* Import czcionki Poppins z Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+        /* Reset marginesów i paddingów, ustawienie box-sizing i czcionki dla całej strony */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -14,15 +16,18 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        /* Styl dla całego body - tło gradientowe, kolor tekstu, layout flex */
         body {
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: #e0e0e0;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            justify-content: space-between;
+            overflow-x: hidden;
         }
 
+        /* Styl nagłówka - półprzezroczyste tło, obramowanie, pozycja sticky na górze */
         header {
             background: rgba(0, 255, 255, 0.15);
             border-bottom: 2px solid #00ffff;
@@ -33,34 +38,398 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,255,255,0.2);
             backdrop-filter: blur(10px);
         }
 
-        .welcome {
-            color: #00ffff;
-            font-weight: 700;
-            font-size: 1.4rem;
-            text-shadow: 0 0 6px #00ffff;
-            margin: 20px;
-            padding: 20px 40px;
-            border: 4px solid;
-            border-radius: 50px;
-            text-align: left;
-            animation: borderColor 3s linear infinite;
-            box-shadow: 0 0 20px #0ff;
-            flex: 1;
+            /* Powitanie w nagłówku - większa czcionka, neonowy kolor i cień */
+            header .welcome {
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: #00ffff;
+                letter-spacing: 0.1em;
+                text-shadow: 0 0 6px #00ffff;
+            }
+
+            /* Link do Instagrama w nagłówku - flexbox do wyrównania ikony i tekstu, efekt przejścia koloru */
+            header .center a {
+                color: #00ffff;
+                text-decoration: none;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                font-size: 1.3rem;
+                transition: color 0.3s ease;
+            }
+
+                /* Efekt hover na linku Instagram - jaśniejszy kolor i świecący cień */
+                header .center a:hover {
+                    color: #00fff0;
+                    text-shadow: 0 0 8px #00fff0;
+                }
+
+            /* Ikona Instagram - stały rozmiar, cień, animacja pulsowania */
+            header .center img {
+                width: 28px;
+                height: 28px;
+                filter: drop-shadow(0 0 2px #00ffff);
+                transform-origin: center;
+                animation: insta-pulse 2.5s infinite ease-in-out;
+            }
+
+        /* Animacja pulsowania ikony Instagram */
+        @keyframes insta-pulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 2px #00ffff);
+            }
+
+            50% {
+                transform: scale(1.15);
+                filter: drop-shadow(0 0 6px #00ffff);
+            }
         }
 
-        .datetime {
-            color: #a0f0f0;
+        /* Wyświetlanie daty i czasu w nagłówku - mniejsza czcionka, kolor i cień */
+        header .datetime {
             font-weight: 600;
             font-size: 1rem;
+            color: #a0f0f0;
+            user-select: none; /* Zapobiega zaznaczaniu tekstu */
+            letter-spacing: 0.05em;
             text-shadow: 0 0 4px #00ffffaa;
-            min-width: 150px;
+            min-width: 210px;
             text-align: right;
-            flex-shrink: 0;
         }
 
+        /* Główna część strony - flexbox, odstępy i maksymalna szerokość */
+        main {
+            flex-grow: 1;
+            padding: 40px 60px;
+            display: flex;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        /* Sidebar po lewej - tło półprzezroczyste, obramowanie, zaokrąglone rogi, cień wewnętrzny */
+        aside.sidebar {
+            width: 30%;
+            background: rgba(0,255,255,0.05);
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 0 25px #00ffff44 inset;
+            backdrop-filter: blur(12px);
+        }
+
+            /* Nagłówek w sidebarze - większa czcionka, neonowy kolor, cień */
+            aside.sidebar h2 {
+                font-size: 2.2rem;
+                color: #00ffff;
+                margin-bottom: 25px;
+                text-align: center;
+                text-shadow: 0 0 8px #00ffffcc;
+            }
+
+        /* Kontener dla rozwijanego panelu (dropdown) - tło, zaokrąglenia, cień, animacja tła */
+        .dropdown {
+            background: #012b34dd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px #00ffff55;
+            overflow: hidden;
+            transition: background 0.3s ease;
+        }
+
+            /* Efekt hover na dropdown - ciemniejsze tło */
+            .dropdown:hover {
+                background: #005f73cc;
+            }
+
+            /* Przycisk rozwijanego panelu - pełna szerokość, bez ramki, padding, styl czcionki */
+            .dropdown button {
+                width: 100%;
+                background: none;
+                border: none;
+                padding: 18px 20px;
+                font-size: 1.2rem;
+                color: #00ffff;
+                font-weight: 600;
+                cursor: pointer;
+                text-align: left;
+                letter-spacing: 0.05em;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                user-select: none;
+                position: relative;
+            }
+
+                /* Strzałka w przycisku dropdown - po prawej stronie, rotacja przy aktywacji */
+                .dropdown button::after {
+                    content: "▼";
+                    font-size: 0.7rem;
+                    color: #00ffffaa;
+                    margin-left: auto;
+                    transition: transform 0.3s ease;
+                }
+
+            /* Odwrócenie strzałki, gdy dropdown jest aktywny */
+            .dropdown.active button::after {
+                transform: rotate(-180deg);
+            }
+
+        /* Zawartość rozwijanego panelu - początkowo ukryta, animacja wysokości i paddingu */
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 20px;
+            color: #a0f0f0;
+            font-size: 1rem;
+            line-height: 1.5;
+            transition: max-height 0.5s ease, padding 0.4s ease;
+            letter-spacing: 0.02em;
+            user-select: text;
+        }
+
+        /* Pokazywanie zawartości po aktywacji dropdown */
+        .dropdown.active .dropdown-content {
+            max-height: 300px;
+            padding: 15px 20px 25px 20px;
+        }
+
+        /* Sekcja usług - tło półprzezroczyste, zaokrąglenia, cień wewnętrzny, flex kolumna */
+        section.services {
+            flex-grow: 1;
+            background: rgba(0,255,255,0.07);
+            border-radius: 20px;
+            padding: 30px 40px;
+            box-shadow: 0 0 40px #00ffff33 inset;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+        }
+
+            /* Nagłówek sekcji usług - większa czcionka, neonowy kolor i cień, wyśrodkowanie */
+            section.services h2 {
+                font-size: 2.6rem;
+                margin-bottom: 30px;
+                color: #00ffff;
+                text-shadow: 0 0 10px #00ffffcc;
+                text-align: center;
+                letter-spacing: 0.1em;
+            }
+
+        /* Siatka linków do usług - flex, zawijanie i odstępy */
+        .service-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        /* Pojedynczy link usługi - tło, obramowanie, zaokrąglenia, rozmiar, cień, flex kolumna */
+        .service-link {
+            background: #012b34cc;
+            border: 2px solid #00ffff;
+            border-radius: 15px;
+            width: 140px;
+            padding: 20px 15px;
+            text-align: center;
+            color: #00ffff;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 0 15px #00ffff88;
+            transition: background 0.3s ease, transform 0.3s ease;
+            user-select: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+            /* Efekt hover na link usługi - zmiana tła, koloru tekstu, powiększenie i cień */
+            .service-link:hover {
+                background: #00ffff;
+                color: #002b34;
+                transform: scale(1.05);
+                box-shadow: 0 0 25px #00ffffdd;
+            }
+
+            /* Ikony w linkach usług - rozmiar i cień, efekt przejścia */
+            .service-link img {
+                width: 55px;
+                height: 55px;
+                filter: drop-shadow(0 0 5px #00ffffbb);
+                transition: filter 0.3s ease;
+            }
+
+            /* Zmiana cienia ikony przy hover */
+            .service-link:hover img {
+                filter: drop-shadow(0 0 10px #002b34);
+            }
+
+        /* Stopka - wyśrodkowanie, padding, mniejsza czcionka, półprzezroczysty kolor i cień */
+        footer {
+            text-align: center;
+            padding: 15px 10px;
+            font-size: 0.9rem;
+            color: #00ffffaa;
+            text-shadow: 0 0 4px #00ffff55;
+            border-top: 1px solid #00ffff44;
+            user-select: none;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Responsive - układ main i sidebar na mniejszych ekranach do kolumnowego */
+        @media (max-width: 1024px) {
+            main {
+                padding: 30px 20px;
+                gap: 35px;
+                flex-direction: column;
+                max-width: 90vw;
+                margin: 40px auto;
+            }
+
+            aside.sidebar {
+                width: 100%;
+            }
+
+            section.services {
+                width: 100%;
+            }
+        }
+
+        /* Responsive dla bardzo małych ekranów - zmniejszenie rozmiarów tekstu i ikon */
+        @media (max-width: 480px) {
+            header .welcome {
+                font-size: 1.3rem;
+            }
+
+            header .center a {
+                font-size: 1.1rem;
+            }
+
+            header .datetime {
+                font-size: 0.85rem;
+                min-width: 150px;
+            }
+
+            .service-link {
+                width: 100%;
+                flex-direction: row;
+                justify-content: start;
+                padding: 15px;
+                font-size: 1rem;
+            }
+
+                .service-link img {
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 15px;
+                }
+        }
+        /* Układ głównej zawartości strony - flexbox z odstępem */
+        main {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 40px;
+        }
+
+        /* Styl dwóch kolumn: lewa i prawa, z półprzezroczystym tłem i obramowaniem */
+        .left, .right {
+            width: 30%;
+            background: rgba(0,255,255,0.05);
+            border: 2px solid #00ffff;
+            border-radius: 30px;
+            padding: 25px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 25px #00ffff44 inset;
+        }
+
+            /* Styl nagłówka w lewej kolumnie */
+            .left h2 {
+                color: #00ffff;
+                text-align: center;
+                text-shadow: 0 0 8px #00ffffcc;
+                margin-bottom: 20px;
+            }
+
+            /* Styl paragrafów w lewej kolumnie */
+            .left p {
+                margin-bottom: 20px;
+                color: #a0f0f0;
+                line-height: 1.6;
+            }
+
+        /* Styl przycisków */
+        .button {
+            background: #012b34;
+            color: #00ffff;
+            border: 2px solid #00ffff;
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            transition: 0.3s ease;
+            text-shadow: 0 0 5px #00ffff;
+        }
+
+            /* Efekt hover na przyciskach */
+            .button:hover {
+                background: #00ffff;
+                color: #002b34;
+                text-shadow: 0 0 8px #002b34;
+            }
+
+                /* Dodatek po hoverze z tekstem i odstępem */
+                .button:hover::after {
+                    content: "⭐Dzięki za wybranie mnie";
+                    margin-left: 10px;
+                }
+
+        /* Styl przycisków w prawej kolumnie - pełna szerokość i odstęp */
+        .right .button {
+            display: block;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+
+        /* Styl modala (okienka popup) - ukryty domyślnie, pozycjonowanie na środku */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #012b34;
+            border: 2px solid #00ffff;
+            padding: 30px;
+            border-radius: 30px;
+            color: #00ffff;
+            box-shadow: 0 0 20px #00ffffaa;
+            z-index: 2000;
+        }
+
+            /* Klasa aktywna modala - widoczny */
+            .modal.active {
+                display: block;
+            }
+
+            /* Styl przycisku w modal */
+            .modal button {
+                margin-top: 20px;
+            }
+
+        /* Animacja zmieniająca kolor obramowania i cień w powitaniu */
         @keyframes borderColor {
             0% {
                 border-color: #ff0000;
@@ -87,92 +456,106 @@
                 box-shadow: 0 0 10px #ff0000;
             }
         }
-
-        /* Styl modala - wyskakuj�cego okienka */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.6);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .modal-content {
-            background: #012b34;
-            border: 3px solid #00ffff;
-            border-radius: 20px;
-            padding: 30px 50px;
-            box-shadow: 0 0 20px #00ffffaa;
-            text-align: center;
-            max-width: 300px;
-            color: #00ffff;
-            font-weight: 700;
-            font-size: 1.6rem;
-            text-shadow: 0 0 10px #00ffff;
-            animation: borderColor 4s linear infinite;
-        }
-
-        .modal-button {
-            margin-top: 25px;
-            background-color: transparent;
-            border: 2px solid #00ffff;
-            color: #00ffff;
-            font-weight: 700;
-            font-size: 1.2rem;
-            padding: 10px 30px;
-            border-radius: 30px;
-            cursor: pointer;
-            box-shadow: 0 0 15px #00ffffaa;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-            .modal-button:hover {
-                background-color: #00ffff;
-                color: #012b34;
-                box-shadow: 0 0 25px #00ffff;
-            }
     </style>
 </head>
 <body>
+    <!-- Nagłówek strony -->
     <header>
-        <div class="welcome">Mi�ego dnia!</div>
-        <div class="datetime" id="datetime"></div>
-    </header>
+        <!-- Powitanie użytkownika -->
+        <div class="welcome">Mentoring Reselling</div>
 
-    <main>
-        <!-- Zawarto�� strony -->
-    </main>
-
-    <!-- Modal -->
-    <div class="modal-overlay" id="modal">
-        <div class="modal-content">
-            Ju� wkr�tce...
-            <button class="modal-button" id="closeModal">OK</button>
+        <!-- Link do profilu Instagram, wyśrodkowany -->
+        <div class="center">
+            <a href="https://www.instagram.com/arriderx/" target="_blank" rel="noopener noreferrer" aria-label="Instagram arriderx">
+                <!-- Ikona Instagrama -->
+                <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
+                @arriderx
+            </a>
         </div>
-    </div>
 
+
+        <!-- Miejsce na aktualną datę i czas, ładowane dynamicznie przez JS -->
+        <div class="datetime" id="datetime">Loading...</div>
+    </header>
     <script>
-        // Aktualizacja daty i godziny w headerze
+        // Funkcja aktualizująca aktualną datę i czas w elemencie o id "datetime"
         function updateDateTime() {
-            const now = new Date();
+            const dt = new Date();  // Pobranie aktualnej daty i godziny
+
+            // Opcje formatowania daty i czasu w języku polskim
             const options = {
-                year: 'numeric', month: '2-digit', day: '2-digit',
-                hour: '2-digit', minute: '2-digit', second: '2-digit'
+                weekday: 'long',     // Dzień tygodnia (np. poniedziałek)
+                year: 'numeric',     // Rok w formacie liczbowym (np. 2025)
+                month: 'long',       // Pełna nazwa miesiąca (np. czerwiec)
+                day: 'numeric',      // Dzień miesiąca (np. 1)
+                hour: '2-digit',     // Godzina (np. 08)
+                minute: '2-digit',   // Minuty (np. 05)
+                second: '2-digit'    // Sekundy (np. 09)
             };
-            document.getElementById('datetime').textContent = now.toLocaleString('pl-PL', options);
+
+            // Sformatowanie daty według powyższych opcji w języku polskim
+            const dateStr = dt.toLocaleDateString('pl-PL', options);
+
+            // Wstawienie sformatowanej daty do elementu o id "datetime"
+            // oraz zamiana pierwszej litery na wielką literę
+            document.getElementById('datetime').textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
         }
+
+        // Uruchomienie aktualizacji daty i czasu co 1000 ms (1 sekunda)
         setInterval(updateDateTime, 1000);
+
+        // Wywołanie funkcji od razu po załadowaniu skryptu, by nie czekać na pierwszy interwał
         updateDateTime();
 
-        // Zamkni�cie modala po klikni�ciu OK
-        document.getElementById('closeModal').addEventListener('click', () => {
-            document.getElementById('modal').style.display = 'none';
+        // Obsługa kliknięć przycisków w elementach dropdown
+        const dropdowns = document.querySelectorAll('.dropdown button');
+
+        dropdowns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const parent = btn.parentElement;  // Pobranie rodzica (div.dropdown)
+                parent.classList.toggle('active'); // Przełączenie klasy "active" (pokazuje/ukrywa zawartość)
+            });
         });
     </script>
+    <main>
+        <!-- Lewa kolumna z opisem i linkiem do formularza -->
+        <div class="left">
+            <h2>Mentoring</h2>
+            <p>
+                🚀 Mentoring biznesowy — Twoja droga do zarobku! 💰
+                Jeszcze nie mam tu gotowego sklepu, gdzie od razu kupisz mój mentoring, ale… klikając przycisk „Sprawdź” możesz zobaczyć moją pierwszą, prostą stronę poświęconą nauce biznesu. 💼
+
+                Już wielu ode mnie skorzystało i po zaledwie miesiącu przestali narzekać na zarobki! 🎉
+
+                Nie martw się, ta strona, na której właśnie jesteś, to dopiero początek. 💻
+
+                Pierwsze 25 zamówień dostanie wyjątkową, aż 50% zniżkę! 🔥
+
+                Jeśli chcesz zacząć zarabiać serio i na poważnie — to jest Twój moment! ⏰
+
+                Zainteresowany?
+                👉 Zapraszam Cię na mojego Instagrama (link znajdziesz na samej górze strony), tam dowiesz się więcej i będziemy w kontakcie! 🤝
+
+                Nie czekaj, zacznij działać już dziś — bo okazje tak szybko nie wracają! ✨
+
+            </p>
+            <!-- Link do formularza -->
+            <a class="button" href="https://mentoringbiznesowy.simdif.com">Sprawdź🚀</a>
+        </div>
+
+        <!-- Prawa kolumna z przyciskami do nawigacji i kontaktu -->
+        <div class="right">
+            <a class="button" href="glowna.html">Powrót</a>
+            <a class="button" href="https://www.facebook.com/profile.php?id=100087878471197" target="_blank">Facebook</a>
+            <!-- Przycisk z alertem -->
+            <button class="button" onclick="alert('Mówiłem, żebyś nie klikał 😄')">Nie klikaj mnie</button>
+            <!-- Przycisk otwierający modal z emailem -->
+            <button class="button" onclick="toggleModal()">Kontakt na email</button>
+        </div>
+    </main>
+    <footer>
+        <!-- Stopka strony z informacją o prawach autorskich -->
+        &copy; 2025 arriderx. Wszelkie prawa zastrzeżone.
+    </footer>
 </body>
 </html>

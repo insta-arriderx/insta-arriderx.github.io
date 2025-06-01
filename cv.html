@@ -6,8 +6,10 @@
     <title>arriderx - CV</title>
     <link rel="stylesheet" href="glowna.css">
     <style>
+        /* Import fontu Poppins z Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+        /* Reset marginesów i paddingów, ustawienie box-sizing oraz fontu */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -15,6 +17,7 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        /* Styl ciała dokumentu - gradient tła, kolor tekstu i układ flex kolumnowy */
         body {
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: #e0e0e0;
@@ -23,6 +26,7 @@
             flex-direction: column;
         }
 
+        /* Styl nagłówka - półprzezroczyste tło, border, padding, flexbox, pozycja sticky */
         header {
             background: rgba(0, 255, 255, 0.15);
             border-bottom: 2px solid #00ffff;
@@ -36,6 +40,7 @@
             backdrop-filter: blur(10px);
         }
 
+        /* Styl powitania z animacją obramowania i cieniem światła */
         .welcome {
             color: #00ffff;
             font-weight: 700;
@@ -50,16 +55,47 @@
             box-shadow: 0 0 20px #0ff;
         }
 
-        .center a {
+        /* Link do Instagrama w nagłówku - flexbox do wyrównania ikony i tekstu, efekt przejścia koloru */
+        header .center a {
             color: #00ffff;
             text-decoration: none;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.2rem;
-            font-weight: 700;
+            gap: 12px;
+            font-size: 1.3rem;
+            transition: color 0.3s ease;
         }
 
+            /* Efekt hover na linku Instagram - jaśniejszy kolor i świecący cień */
+            header .center a:hover {
+                color: #00fff0;
+                text-shadow: 0 0 8px #00fff0;
+            }
+
+        /* Ikona Instagram - stały rozmiar, cień, animacja pulsowania */
+        header .center img {
+            width: 28px;
+            height: 28px;
+            filter: drop-shadow(0 0 2px #00ffff);
+            transform-origin: center;
+            animation: insta-pulse 2.5s infinite ease-in-out;
+        }
+
+        /* Animacja pulsowania ikony Instagram */
+        @keyframes insta-pulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 2px #00ffff);
+            }
+
+            50% {
+                transform: scale(1.15);
+                filter: drop-shadow(0 0 6px #00ffff);
+            }
+        }
+
+        /* Styl daty i czasu w nagłówku */
         .datetime {
             color: #a0f0f0;
             font-weight: 600;
@@ -67,6 +103,7 @@
             text-shadow: 0 0 4px #00ffffaa;
         }
 
+        /* Układ głównej zawartości strony - flexbox z odstępem */
         main {
             display: flex;
             justify-content: space-between;
@@ -74,6 +111,7 @@
             padding: 40px;
         }
 
+        /* Styl dwóch kolumn: lewa i prawa, z półprzezroczystym tłem i obramowaniem */
         .left, .right {
             width: 30%;
             background: rgba(0,255,255,0.05);
@@ -84,6 +122,7 @@
             box-shadow: 0 0 25px #00ffff44 inset;
         }
 
+            /* Styl nagłówka w lewej kolumnie */
             .left h2 {
                 color: #00ffff;
                 text-align: center;
@@ -91,12 +130,14 @@
                 margin-bottom: 20px;
             }
 
+            /* Styl paragrafów w lewej kolumnie */
             .left p {
                 margin-bottom: 20px;
                 color: #a0f0f0;
                 line-height: 1.6;
             }
 
+        /* Styl przycisków */
         .button {
             background: #012b34;
             color: #00ffff;
@@ -111,23 +152,27 @@
             text-shadow: 0 0 5px #00ffff;
         }
 
+            /* Efekt hover na przyciskach */
             .button:hover {
                 background: #00ffff;
                 color: #002b34;
                 text-shadow: 0 0 8px #002b34;
             }
 
+                /* Dodatek po hoverze z tekstem i odstępem */
                 .button:hover::after {
                     content: "⭐Dzięki za wybranie mnie";
                     margin-left: 10px;
                 }
 
+        /* Styl przycisków w prawej kolumnie - pełna szerokość i odstęp */
         .right .button {
             display: block;
             margin-bottom: 15px;
             width: 100%;
         }
 
+        /* Styl modala (okienka popup) - ukryty domyślnie, pozycjonowanie na środku */
         .modal {
             display: none;
             position: fixed;
@@ -143,13 +188,17 @@
             z-index: 2000;
         }
 
+            /* Klasa aktywna modala - widoczny */
             .modal.active {
                 display: block;
             }
 
+            /* Styl przycisku w modal */
             .modal button {
                 margin-top: 20px;
             }
+
+        /* Animacja zmieniająca kolor obramowania i cień w powitaniu */
         @keyframes borderColor {
             0% {
                 border-color: #ff0000;
@@ -176,22 +225,27 @@
                 box-shadow: 0 0 10px #ff0000;
             }
         }
-
     </style>
 </head>
 <body>
     <header>
+        <!-- Powitanie -->
         <div class="welcome">Miłego dnia!</div>
+
+        <!-- Link do Instagrama z ikoną -->
         <div class="center">
             <a href="https://www.instagram.com/arriderx" target="_blank">
                 <img src="images/instagram.png" alt="Instagram" style="width: 28px; height: 28px;">
                 Mój Instagram
             </a>
         </div>
+
+        <!-- Miejsce na aktualną datę i godzinę -->
         <div class="datetime" id="datetime"></div>
     </header>
 
     <main>
+        <!-- Lewa kolumna z opisem i linkiem do formularza -->
         <div class="left">
             <h2>Potrzebuję pomocy z... CV</h2>
             <p>
@@ -202,17 +256,22 @@
                 Klauzula zgody:
                 Wyrażam zgodę na przetwarzanie moich danych osobowych zawartych w formularzu kontaktowym, zgodnie z obowiązującymi przepisami, w celu pomocy w przygotowaniu CV. Oświadczam, że wszystkie podane dane są prawdziwe. Dbamy o Twoją prywatność i jesteśmy tu, by ułatwić Ci pierwszy krok do nowej pracy!
             </p>
-            <a class="button" href="formularz.html">Przejdź do formularza</a>
+            <!-- Link do formularza -->
+            <a class="button" href="https://forms.gle/76SeKFJhWJGNcmgG7">Przejdź do formularza</a>
         </div>
 
+        <!-- Prawa kolumna z przyciskami do nawigacji i kontaktu -->
         <div class="right">
             <a class="button" href="glowna.html">Powrót</a>
             <a class="button" href="https://www.facebook.com/profile.php?id=100087878471197" target="_blank">Facebook</a>
+            <!-- Przycisk z alertem -->
             <button class="button" onclick="alert('Mówiłem, żebyś nie klikał 😄')">Nie klikaj mnie</button>
+            <!-- Przycisk otwierający modal z emailem -->
             <button class="button" onclick="toggleModal()">Kontakt na email</button>
         </div>
     </main>
 
+    <!-- Modal z kontaktem email -->
     <div class="modal" id="emailModal">
         <p>Email kontaktowy: <strong>nikugamespl@gmail.com</strong></p>
         <button class="button" onclick="toggleModal()">OK</button>
@@ -223,19 +282,44 @@
     </footer>
 
     <script>
-        function toggleModal() {
-            document.getElementById("emailModal").classList.toggle("active");
-        }
-
+        // Funkcja aktualizująca aktualną datę i czas w elemencie o id "datetime"
         function updateDateTime() {
-            const now = new Date();
-            const date = now.toLocaleDateString('pl-PL');
-            const time = now.toLocaleTimeString('pl-PL');
-            document.getElementById('datetime').textContent = `${date} ${time}`;
+            const dt = new Date();  // Pobranie aktualnej daty i godziny
+
+            // Opcje formatowania daty i czasu w języku polskim
+            const options = {
+                weekday: 'long',     // Dzień tygodnia (np. poniedziałek)
+                year: 'numeric',     // Rok w formacie liczbowym (np. 2025)
+                month: 'long',       // Pełna nazwa miesiąca (np. czerwiec)
+                day: 'numeric',      // Dzień miesiąca (np. 1)
+                hour: '2-digit',     // Godzina (np. 08)
+                minute: '2-digit',   // Minuty (np. 05)
+                second: '2-digit'    // Sekundy (np. 09)
+            };
+
+            // Sformatowanie daty według powyższych opcji w języku polskim
+            const dateStr = dt.toLocaleDateString('pl-PL', options);
+
+            // Wstawienie sformatowanej daty do elementu o id "datetime"
+            // oraz zamiana pierwszej litery na wielką literę
+            document.getElementById('datetime').textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
         }
 
+        // Uruchomienie aktualizacji daty i czasu co 1000 ms (1 sekunda)
         setInterval(updateDateTime, 1000);
+
+        // Wywołanie funkcji od razu po załadowaniu skryptu, by nie czekać na pierwszy interwał
         updateDateTime();
+
+        // Obsługa kliknięć przycisków w elementach dropdown
+        const dropdowns = document.querySelectorAll('.dropdown button');
+
+        dropdowns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const parent = btn.parentElement;  // Pobranie rodzica (div.dropdown)
+                parent.classList.toggle('active'); // Przełączenie klasy "active" (pokazuje/ukrywa zawartość)
+            });
+        });
     </script>
 </body>
 </html>

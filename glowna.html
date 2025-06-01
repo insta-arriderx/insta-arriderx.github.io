@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>arriderx - Start</title>
     <style>
+        /* Import czcionki Poppins z Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+        /* Reset marginesów i paddingów, ustawienie box-sizing i czcionki dla całej strony */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -14,6 +16,7 @@
             font-family: 'Poppins', sans-serif;
         }
 
+        /* Styl dla całego body - tło gradientowe, kolor tekstu, layout flex */
         body {
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: #e0e0e0;
@@ -24,6 +27,7 @@
             overflow-x: hidden;
         }
 
+        /* Styl nagłówka - półprzezroczyste tło, obramowanie, pozycja sticky na górze */
         header {
             background: rgba(0, 255, 255, 0.15);
             border-bottom: 2px solid #00ffff;
@@ -38,6 +42,7 @@
             backdrop-filter: blur(10px);
         }
 
+            /* Powitanie w nagłówku - większa czcionka, neonowy kolor i cień */
             header .welcome {
                 font-size: 1.6rem;
                 font-weight: 700;
@@ -46,6 +51,7 @@
                 text-shadow: 0 0 6px #00ffff;
             }
 
+            /* Link do Instagrama w nagłówku - flexbox do wyrównania ikony i tekstu, efekt przejścia koloru */
             header .center a {
                 color: #00ffff;
                 text-decoration: none;
@@ -57,11 +63,13 @@
                 transition: color 0.3s ease;
             }
 
+                /* Efekt hover na linku Instagram - jaśniejszy kolor i świecący cień */
                 header .center a:hover {
                     color: #00fff0;
                     text-shadow: 0 0 8px #00fff0;
                 }
 
+            /* Ikona Instagram - stały rozmiar, cień, animacja pulsowania */
             header .center img {
                 width: 28px;
                 height: 28px;
@@ -70,6 +78,7 @@
                 animation: insta-pulse 2.5s infinite ease-in-out;
             }
 
+        /* Animacja pulsowania ikony Instagram */
         @keyframes insta-pulse {
             0%, 100% {
                 transform: scale(1);
@@ -82,26 +91,29 @@
             }
         }
 
+        /* Wyświetlanie daty i czasu w nagłówku - mniejsza czcionka, kolor i cień */
         header .datetime {
             font-weight: 600;
             font-size: 1rem;
             color: #a0f0f0;
-            user-select: none;
+            user-select: none; /* Zapobiega zaznaczaniu tekstu */
             letter-spacing: 0.05em;
             text-shadow: 0 0 4px #00ffffaa;
             min-width: 210px;
             text-align: right;
         }
 
+        /* Główna część strony - flexbox, odstępy i maksymalna szerokość */
         main {
             flex-grow: 1;
-            padding: 40px 60px;
+            padding: 40px 0px;
             display: flex;
             gap: 50px;
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 40px;
         }
 
+        /* Sidebar po lewej - tło półprzezroczyste, obramowanie, zaokrąglone rogi, cień wewnętrzny */
         aside.sidebar {
             width: 30%;
             background: rgba(0,255,255,0.05);
@@ -112,6 +124,7 @@
             backdrop-filter: blur(12px);
         }
 
+            /* Nagłówek w sidebarze - większa czcionka, neonowy kolor, cień */
             aside.sidebar h2 {
                 font-size: 2.2rem;
                 color: #00ffff;
@@ -120,6 +133,7 @@
                 text-shadow: 0 0 8px #00ffffcc;
             }
 
+        /* Kontener dla rozwijanego panelu (dropdown) - tło, zaokrąglenia, cień, animacja tła */
         .dropdown {
             background: #012b34dd;
             border-radius: 10px;
@@ -129,10 +143,12 @@
             transition: background 0.3s ease;
         }
 
+            /* Efekt hover na dropdown - ciemniejsze tło */
             .dropdown:hover {
                 background: #005f73cc;
             }
 
+            /* Przycisk rozwijanego panelu - pełna szerokość, bez ramki, padding, styl czcionki */
             .dropdown button {
                 width: 100%;
                 background: none;
@@ -151,6 +167,7 @@
                 position: relative;
             }
 
+                /* Strzałka w przycisku dropdown - po prawej stronie, rotacja przy aktywacji */
                 .dropdown button::after {
                     content: "▼";
                     font-size: 0.7rem;
@@ -159,10 +176,12 @@
                     transition: transform 0.3s ease;
                 }
 
+            /* Odwrócenie strzałki, gdy dropdown jest aktywny */
             .dropdown.active button::after {
                 transform: rotate(-180deg);
             }
 
+        /* Zawartość rozwijanego panelu - początkowo ukryta, animacja wysokości i paddingu */
         .dropdown-content {
             max-height: 0;
             overflow: hidden;
@@ -175,11 +194,13 @@
             user-select: text;
         }
 
+        /* Pokazywanie zawartości po aktywacji dropdown */
         .dropdown.active .dropdown-content {
             max-height: 300px;
             padding: 15px 20px 25px 20px;
         }
 
+        /* Sekcja usług - tło półprzezroczyste, zaokrąglenia, cień wewnętrzny, flex kolumna */
         section.services {
             flex-grow: 1;
             background: rgba(0,255,255,0.07);
@@ -191,6 +212,7 @@
             flex-direction: column;
         }
 
+            /* Nagłówek sekcji usług - większa czcionka, neonowy kolor i cień, wyśrodkowanie */
             section.services h2 {
                 font-size: 2.6rem;
                 margin-bottom: 30px;
@@ -200,6 +222,7 @@
                 letter-spacing: 0.1em;
             }
 
+        /* Siatka linków do usług - flex, zawijanie i odstępy */
         .service-grid {
             display: flex;
             flex-wrap: wrap;
@@ -207,6 +230,7 @@
             justify-content: center;
         }
 
+        /* Pojedynczy link usługi - tło, obramowanie, zaokrąglenia, rozmiar, cień, flex kolumna */
         .service-link {
             background: #012b34cc;
             border: 2px solid #00ffff;
@@ -228,6 +252,7 @@
             text-decoration: none;
         }
 
+            /* Efekt hover na link usługi - zmiana tła, koloru tekstu, powiększenie i cień */
             .service-link:hover {
                 background: #00ffff;
                 color: #002b34;
@@ -235,6 +260,7 @@
                 box-shadow: 0 0 25px #00ffffdd;
             }
 
+            /* Ikony w linkach usług - rozmiar i cień, efekt przejścia */
             .service-link img {
                 width: 55px;
                 height: 55px;
@@ -242,10 +268,12 @@
                 transition: filter 0.3s ease;
             }
 
+            /* Zmiana cienia ikony przy hover */
             .service-link:hover img {
                 filter: drop-shadow(0 0 10px #002b34);
             }
 
+        /* Stopka - wyśrodkowanie, padding, mniejsza czcionka, półprzezroczysty kolor i cień */
         footer {
             text-align: center;
             padding: 15px 10px;
@@ -258,8 +286,7 @@
             backdrop-filter: blur(8px);
         }
 
-        /* Responsive */
-
+        /* Responsive - układ main i sidebar na mniejszych ekranach do kolumnowego */
         @media (max-width: 1024px) {
             main {
                 padding: 30px 20px;
@@ -278,6 +305,7 @@
             }
         }
 
+        /* Responsive dla bardzo małych ekranów - zmniejszenie rozmiarów tekstu i ikon */
         @media (max-width: 480px) {
             header .welcome {
                 font-size: 1.3rem;
@@ -295,35 +323,161 @@
             .service-link {
                 width: 100%;
                 flex-direction: row;
-                justify-content: flex-start;
-                gap: 15px;
+                justify-content: start;
+                padding: 15px;
                 font-size: 1rem;
-                padding: 12px 15px;
             }
 
                 .service-link img {
-                    width: 38px;
-                    height: 38px;
+                    width: 40px;
+                    height: 40px;
+                    margin-right: 15px;
                 }
         }
+        /* Pojedynczy box w sekcji Aktualności */
+        .news-box {
+            background: rgba(0,255,255,0.03); /* lekkie tło neonowe */
+            border: 1px solid #00ffff55; /* cienka neonowa ramka */
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px #00ffff22 inset; /* delikatny cień wewnątrz */
+            color: #a0f0f0; /* jasna czcionka */
+        }
+
+            /* Tytuł w news-boxie */
+            .news-box h3 {
+                font-size: 1.4rem;
+                color: #00ffff;
+                margin-bottom: 10px;
+            }
+
+            /* Lista w news-boxie */
+            .news-box ul {
+                padding-left: 20px;
+            }
+
+            /* Elementy listy */
+            .news-box li {
+                margin-bottom: 5px;
+            }
+
+        /* Usuwamy standardowe wypunktowanie listy i resetujemy padding, a także ustawiamy maksymalną szerokość i centrowanie */
+        .services ul {
+            list-style: none; /* bez punktów */
+            padding: 0;
+            max-width: 600px; /* ograniczamy szerokość, żeby nie było za szeroko */
+            margin: 0 auto; /* centrowanie poziome */
+        }
+
+            /* Styl pojedynczego elementu listy (główne punkty cennika) */
+            .services ul > li {
+                border: 2px solid #00ffff; /* neonowe niebieskie obramowanie */
+                border-radius: 12px; /* zaokrąglone rogi */
+                padding: 15px 20px; /* przestrzeń wewnętrzna */
+                margin-bottom: 15px; /* odstęp między elementami */
+                background: rgba(0, 255, 255, 0.05); /* lekko przezroczyste tło */
+                box-shadow: 0 0 15px #00ffff44; /* delikatny neonowy cień */
+                font-weight: 600; /* pogrubiona czcionka */
+                color: #00ffff; /* kolor tekstu neonowy */
+                transition: background 0.3s ease; /* płynna zmiana tła przy hover */
+            }
+
+                /* Efekt po najechaniu na element listy */
+                .services ul > li:hover {
+                    background: rgba(0, 255, 255, 0.15); /* jaśniejsze tło */
+                    box-shadow: 0 0 25px #00ffff88; /* mocniejszy cień */
+                }
+
+            /* Styl dla podlisty (np. podkategorie w cenniku) */
+            .services ul li ul {
+                margin-top: 10px; /* odstęp od głównego punktu */
+                padding-left: 15px; /* przesunięcie w prawo dla podlisty */
+            }
+
+                /* Styl pojedynczego elementu podlisty */
+                .services ul li ul li {
+                    border: 1.5px solid #00ffffaa; /* cieńsze, mniej intensywne obramowanie */
+                    border-radius: 10px; /* zaokrąglone rogi */
+                    padding: 8px 12px; /* mniejszy padding */
+                    margin-bottom: 8px; /* odstęp między podpunktami */
+                    background: rgba(0, 255, 255, 0.03); /* jeszcze bardziej transparentne tło */
+                    font-weight: 500; /* trochę lżejsza czcionka */
+                    color: #66ffff; /* jaśniejszy niebieski tekst */
+                    box-shadow: 0 0 8px #00ffff22; /* delikatny cień */
+                    transition: background 0.3s ease; /* płynna zmiana tła przy hover */
+                }
+
+                    /* Efekt hover dla podpunktów */
+                    .services ul li ul li:hover {
+                        background: rgba(0, 255, 255, 0.1); /* jaśniejsze tło */
+                        box-shadow: 0 0 15px #00ffff55; /* mocniejszy cień */
+                    }
+
     </style>
 </head>
 <body>
+    <!-- Nagłówek strony -->
     <header>
+        <!-- Powitanie użytkownika -->
         <div class="welcome">Witaj na mojej stronie!</div>
+
+        <!-- Link do profilu Instagram, wyśrodkowany -->
         <div class="center">
             <a href="https://www.instagram.com/arriderx/" target="_blank" rel="noopener noreferrer" aria-label="Instagram arriderx">
+                <!-- Ikona Instagrama -->
                 <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
                 @arriderx
             </a>
         </div>
+
+        <!-- Miejsce na aktualną datę i czas, ładowane dynamicznie przez JS -->
         <div class="datetime" id="datetime">Loading...</div>
     </header>
 
+    <!-- Główna zawartość strony -->
     <main>
+        <!-- Sekcja z aktualnościami -->
+        <section class="services">
+            <!-- Nagłówek sekcji -->
+            <h2>📢 Aktualności</h2>
+
+            <!-- Pojedynczy box z promocją -->
+            <div class="news-box">
+                <!-- Tytuł aktualności -->
+                <h3>💸 Promocja: Mentoring -50%</h3>
+                <!-- Treść aktualności -->
+                <p>Skorzystaj z mentoringu o połowę taniej! Promocja dotyczy pierwszych 25 osób. Po zakup na Instagramie.</p>
+            </div>
+
+            <!-- Box z planami na najbliższy czas -->
+            <div class="news-box">
+                <h3>📅 Co nowego w czerwcu?</h3>
+                <ul>
+                    <!-- Lista nadchodzących wydarzeń -->
+                    <li>🔧 Kurs praktyczno&teoretyczny z naprawy motocykli – start 15.06</li>
+                    <li>💼 Dziękuje wam za wspomaganie mojej małej działaności</li>
+                    <li>📲 Już niedługo nowe aktualizacje strony</li>
+                </ul>
+            </div>
+
+            <!-- Box z opinią uczestnika -->
+            <div class="news-box">
+                <h3>🗣️ Opinie uczestników</h3>
+                <!-- Cytat klienta -->
+                <blockquote>"Po 2 tygodniach mentoringu zrobiłem więcej niż przez ostatnie 3 miesiące sam!" – Michał, 17l.</blockquote>
+                <blockquote>"Nie sądziłam, że da się tak szybko ruszyć z miejscem. Dzięki mentoringowi zaczęłam sprzedawać PDF-y i to działa!" – Ola, 16l.</blockquote>
+                <blockquote>"Prosto, konkretnie i bez lania wody. Po pierwszym tygodniu wiedziałem, co robić i miałem już pierwsze zamówienie." – Bartek, 18l.</blockquote>
+                <blockquote>"Mentoring był lepszy niż większość kursów, które wcześniej kupiłem. Zrozumiałem przepisy DAC7, dobrze wydane pieniądze." – Damian, 19l.</blockquote>
+
+            </div>
+        </section>
+
+        <!-- Panel boczny z informacjami o autorze -->
         <aside class="sidebar">
             <h2>O mnie</h2>
 
+            <!-- Rozwijany panel "Kim jestem?" -->
             <div class="dropdown">
                 <button>🧑‍💼 Kim jestem?</button>
                 <div class="dropdown-content">
@@ -334,6 +488,7 @@
                 </div>
             </div>
 
+            <!-- Rozwijany panel "Co robię?" -->
             <div class="dropdown">
                 <button>💡 Co robię?</button>
                 <div class="dropdown-content">
@@ -351,6 +506,7 @@
                 </div>
             </div>
 
+            <!-- Rozwijany panel "Doświadczenie i wiedza" -->
             <div class="dropdown">
                 <button>🌱 Doświadczenie i wiedza</button>
                 <div class="dropdown-content">
@@ -360,6 +516,7 @@
                 </div>
             </div>
 
+            <!-- Rozwijany panel "Dlaczego to robię?" -->
             <div class="dropdown">
                 <button>💬 Dlaczego to robię?</button>
                 <div class="dropdown-content">
@@ -370,6 +527,7 @@
                 </div>
             </div>
 
+            <!-- Rozwijany panel "Moja filozofia" -->
             <div class="dropdown">
                 <button>🧠 Moja filozofia</button>
                 <div class="dropdown-content">
@@ -381,21 +539,29 @@
             </div>
         </aside>
 
+        <!-- Sekcja z linkami do Twoich mediów społecznościowych -->
         <section class="services">
             <h2>Moje sociale</h2>
             <div class="service-grid">
+                <!-- Link do mentoringu -->
                 <a href="https://mentoringbiznesowy.simdif.com" class="service-link" target="_blank" rel="noopener noreferrer">
                     <img src="images/money-flow.png" alt="Mentoring" />
                     Mentoring
                 </a>
+
+                <!-- Link do Telegrama -->
                 <a href="https://t.me/arriderx" class="service-link" target="_blank" rel="noopener noreferrer">
                     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram" />
                     Telegram
                 </a>
+
+                <!-- Link do Facebooka -->
                 <a href="https://www.facebook.com/profile.php?id=100087878471197" class="service-link" target="_blank" rel="noopener noreferrer">
                     <img src="images/facebook.png" alt="Facebook" />
                     Facebook
                 </a>
+
+                <!-- Link do Instagrama -->
                 <a href="https://instagram.com/arriderx" class="service-link" target="_blank" rel="noopener noreferrer">
                     <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" />
                     Instagram
@@ -403,55 +569,98 @@
             </div>
         </section>
 
+        <!-- Sekcja z Cennikiem -->
         <section class="services">
-            <h2>Potrzebuje...</h2>
-            <div class="service-grid">
-                <a href="cv.html" class="service-link" target="_blank" rel="noopener noreferrer">
-                    <img src="images/cv.png" alt="CV" width="64" height="64" />
-                    CV
-                </a>
-                <a href="grafika.html" class="service-link" target="_blank" rel="noopener noreferrer">
-                    <img src="images/layers.png" alt="layers" width="64" height="64" />
-                    Grafika
-                </a>
-                <a href="mentoring.html" class="service-link" target="_blank" rel="noopener noreferrer">
-                    <img src="images/money-flow.png" alt="Moneyflow" width="64" height="64" />
-                    Mentoring
-                </a>
-                <a href="pilne.html" class="service-link" target="_blank" rel="noopener noreferrer">
-                    <img src="images/siren.png" alt="Pilne" width="64" height="64" />
-                    Pilne
-                </a>
-            </div>
+            <!-- Nagłówek sekcji -->
+            <h2>Cennik</h2> <ul>
+                <li><strong>Strony internetowe</strong> – nowoczesne, responsywne, od 150 zł</li>
+                <li><strong>CV i listy motywacyjne</strong> – profesjonalne i skuteczne, 20 zł</li>
+                <li><strong>Mentoring biznesowy PDF/DRUK</strong> – indywidualne wsparcie, 75 zł !!PIERWSZE 25 OSÓB 37ZŁ!!</li>
+                <li>
+                    <strong>Grafiki</strong>:
+                    <ul>
+                        <li>Logo – od 40 zł</li>
+                        <li>Ulotki i gazetki – od 25 zł</li>
+                        <li>Banery i plakaty – od 20 zł</li>
+                    </ul>
+                </li>
+                <li><strong>MotoKurs naprawy motocykli</strong> – wkrótce!</li>
+            </ul>
         </section>
+            <!-- Sekcja z zasobami, które użytkownik może potrzebować -->
+            <section class="services">
+                <h2>Potrzebuje...</h2>
+                <div class="service-grid">
+                    <!-- Link do CV -->
+                    <a href="cv.html" class="service-link" target="_blank" rel="noopener noreferrer">
+                        <img src="images/cv.png" alt="CV" width="64" height="64" />
+                        CV
+                    </a>
+
+                    <!-- Link do grafiki -->
+                    <a href="grafika.html" class="service-link" target="_blank" rel="noopener noreferrer">
+                        <img src="images/layers.png" alt="layers" width="64" height="64" />
+                        Grafika
+                    </a>
+
+                    <!-- Link do mentoringu -->
+                    <a href="mentoring.html" class="service-link" target="_blank" rel="noopener noreferrer">
+                        <img src="images/money-flow.png" alt="Moneyflow" width="64" height="64" />
+                        Mentoring
+                    </a>
+
+                    <!-- Link do pilnych spraw -->
+                    <a href="pilne.html" class="service-link" target="_blank" rel="noopener noreferrer">
+                        <img src="images/siren.png" alt="Pilne" width="64" height="64" />
+                        Pilne
+                    </a>
+                </div>
+            </section>
     </main>
 
 
     <footer>
+        <!-- Stopka strony z informacją o prawach autorskich -->
         &copy; 2025 arriderx. Wszelkie prawa zastrzeżone.
     </footer>
 
     <script>
-        // Aktualna data i czas w nagłówku
+        // Funkcja aktualizująca aktualną datę i czas w elemencie o id "datetime"
         function updateDateTime() {
-            const dt = new Date();
+            const dt = new Date();  // Pobranie aktualnej daty i godziny
+
+            // Opcje formatowania daty i czasu w języku polskim
             const options = {
-                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
-                hour: '2-digit', minute: '2-digit', second: '2-digit'
+                weekday: 'long',     // Dzień tygodnia (np. poniedziałek)
+                year: 'numeric',     // Rok w formacie liczbowym (np. 2025)
+                month: 'long',       // Pełna nazwa miesiąca (np. czerwiec)
+                day: 'numeric',      // Dzień miesiąca (np. 1)
+                hour: '2-digit',     // Godzina (np. 08)
+                minute: '2-digit',   // Minuty (np. 05)
+                second: '2-digit'    // Sekundy (np. 09)
             };
+
+            // Sformatowanie daty według powyższych opcji w języku polskim
             const dateStr = dt.toLocaleDateString('pl-PL', options);
+
+            // Wstawienie sformatowanej daty do elementu o id "datetime"
+            // oraz zamiana pierwszej litery na wielką literę
             document.getElementById('datetime').textContent = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
         }
 
+        // Uruchomienie aktualizacji daty i czasu co 1000 ms (1 sekunda)
         setInterval(updateDateTime, 1000);
+
+        // Wywołanie funkcji od razu po załadowaniu skryptu, by nie czekać na pierwszy interwał
         updateDateTime();
 
-        // Dropdown toggle
+        // Obsługa kliknięć przycisków w elementach dropdown
         const dropdowns = document.querySelectorAll('.dropdown button');
+
         dropdowns.forEach(btn => {
             btn.addEventListener('click', () => {
-                const parent = btn.parentElement;
-                parent.classList.toggle('active');
+                const parent = btn.parentElement;  // Pobranie rodzica (div.dropdown)
+                parent.classList.toggle('active'); // Przełączenie klasy "active" (pokazuje/ukrywa zawartość)
             });
         });
     </script>
